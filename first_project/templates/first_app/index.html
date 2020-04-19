@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends "first_app/b.html" %}
+{% load static %}
+
+
+  {% block body_block %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mario's Enemy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/mystyle.css" %}"/>
+  </head>
+  <body>
+    <h1>Welcome to the Home Page!</h1>
+    <h1>This is a picture of the most vile beast to roam the pipes of Mario's World</h1>
+    <img src="{% static "images/download.jpg"%}" alt="Uh Oh, didn't show!">
+    <h2>Here are your access records:</h2>
+
+    <div class="djangtwo">
+      {% if access_records %}
+      <table>
+        <thead>
+          <th>Site Name</th>
+          <th>Date Accessed</th>
+        </thead>
+
+        {% for acc in access_records %}
+        <tr>
+          <td>{{ acc.name }}</td>
+          <td>{{ acc.date }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+        <p>NO ACCESS RECORDS FOUND!</p>
+      {% endif %}
+
+    </div>
+
+    <h2>Go to formpage/ to check out Forms!</h2>
+
+  </body>
+</html>
+  {% endblock %}
